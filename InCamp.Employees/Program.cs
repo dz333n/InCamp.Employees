@@ -26,6 +26,7 @@ namespace InCamp.Employees
             var csv = new Sheet();
 
             var employees = new List<Employee>();
+            // PART 1: Parse input CSV sheet
             // Converting work time stuff into a local model
             // Gonna skip the 1st row, it's a title
             for (int i = 1; i < inputSheet.Rows.Count; i++)
@@ -56,7 +57,33 @@ namespace InCamp.Employees
                 employee.WorkTimes.Add(new WorkTime() { Date = DateTime.Parse(date), Hours = hours });
             }
 
-            // TODO: generate a new CSV
+            // PART 2: Create a new CSV sheet
+            // Parse unique dates to create a title
+            var datesSet = new HashSet<DateTime>(employees.SelectMany(x => x.WorkTimes).Select(j => j.Date));
+            var dates = datesSet.OrderBy(x => x.TimeOfDay);
+
+            var titleRow = csv.Rows.Create();
+            titleRow.Columns.Create("Name / Date");
+            foreach (var date in dates) titleRow.Columns.Create(date.ToString("yyyy-MM-dd"));
+
+            // Now iterate through employees and check
+            // each date for employee's work hours!
+            foreach (var emp in employees)
+            {
+                var row = csv.Rows.Create();
+
+                // Write employee's name
+                row.Columns.Create(emp.Name);
+
+                foreach (var date in dates)
+                {
+                    var workTime = emp.WorkTimes.FirstOrDefault(x => x.Date == date);
+
+                    if (workTime == default(WorkTime)) row.Columns.Create("-"); // employee didn't work on that day
+                    else row.Columns.Create(workTime.Hours); // write work hours
+                }
+            }
+
             csv.Export(outputFile, SheetType.CSV);
 
             sw.Stop();
