@@ -13,6 +13,17 @@ namespace SheetLib
             set => list[index] = value;
         }
 
+        /// <summary>
+        /// Create a new row
+        /// </summary>
+        /// <returns>Created row</returns>
+        public SheetRow Create()
+        {
+            var row = new SheetRow();
+            Add(row);
+            return row;
+        }
+
         public int Count => list.Count;
 
         public bool IsReadOnly => list.IsReadOnly;

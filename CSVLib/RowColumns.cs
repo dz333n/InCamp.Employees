@@ -13,6 +13,20 @@ namespace SheetLib
             set => list[index] = value;
         }
 
+        public RowColumn Create()
+        {
+            var column = new RowColumn();
+            Add(column);
+            return column;
+        }
+
+        public RowColumn Create(string value)
+        {
+            var column = new RowColumn(value);
+            Add(column);
+            return column;
+        }
+
         public int Count => list.Count;
 
         public bool IsReadOnly => list.IsReadOnly;
