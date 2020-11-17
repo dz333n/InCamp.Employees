@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InCamp.Employees", "InCamp.Employees\InCamp.Employees.csproj", "{13B63385-4875-4BE4-BA4E-6E14DF552F2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSVLib", "CSVLib\CSVLib.csproj", "{FB4769E7-E7D2-474E-957A-E2ABCA6B0060}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SheetLib", "CSVLib\SheetLib.csproj", "{FB4769E7-E7D2-474E-957A-E2ABCA6B0060}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

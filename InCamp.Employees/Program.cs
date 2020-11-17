@@ -1,4 +1,4 @@
-﻿using CSVLib;
+﻿using SheetLib;
 using System;
 using System.Diagnostics;
 
@@ -18,14 +18,14 @@ namespace InCamp.Employees
             sw.Start();
 
             Console.WriteLine("Reading file...");
-            var inputSheet = new CSV(inputFile);
+            var inputSheet = new Sheet(inputFile, SheetType.CSV);
 
             Console.WriteLine("Generating a new one...");
-            var csv = new CSV();
+            var csv = new Sheet();
 
             // TODO: actually generate stuff
 
-            csv.Export(outputFile);
+            csv.Export(outputFile, SheetType.CSV);
 
             sw.Stop();
             Console.WriteLine("Done in " + sw.Elapsed); 

@@ -1,15 +1,20 @@
 ﻿using System;
 
-namespace CSVLib
+namespace SheetLib
 {
-    public class CSV
+    public class Sheet
     {
-        public void Export(string fileName)
+        public void Clear()
         {
             throw new NotImplementedException();
         }
 
-        public void Import(string fileName)
+        public void Export(string fileName, SheetType type)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Import(string fileName, SheetType type)
         {
             throw new NotImplementedException();
         }
@@ -17,15 +22,15 @@ namespace CSVLib
         /// <summary>
         /// Create an empty sheet
         /// </summary>
-        public CSV() { }
+        public Sheet() { }
 
         /// <summary>
         /// Import a sheet
         /// </summary>
         /// <param name="fileName">CSV file</param>
-        public CSV(string fileName) : this()
+        public Sheet(string fileName, SheetType type) : this()
         {
-            Import(fileName);
+            Import(fileName, type);
         }
     }
 }
