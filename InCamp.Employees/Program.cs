@@ -24,6 +24,17 @@ namespace InCamp.Employees
             var csv = new Sheet();
 
             // TODO: actually generate stuff
+            // Copying previous sheet to a new one for testing purposes
+            
+            foreach (var row in inputSheet.Rows)
+            {
+                var newRow = csv.Rows.Create();
+
+                foreach (var column in row.Columns)
+                {
+                    var newColumn = newRow.Columns.Create(column.Value);
+                }
+            }
 
             csv.Export(outputFile, SheetType.CSV);
 
