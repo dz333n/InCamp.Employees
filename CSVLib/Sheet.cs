@@ -1,12 +1,15 @@
 ﻿using System;
+using System.IO;
 
 namespace SheetLib
 {
     public class Sheet
     {
+        public SheetRows Rows { get; } = new SheetRows();
+
         public void Clear()
         {
-            throw new NotImplementedException();
+            Rows.Clear();
         }
 
         public void Export(string fileName, SheetType type)
