@@ -14,7 +14,26 @@ namespace SheetLib
 
         public void Export(string fileName, SheetType type)
         {
-            throw new NotImplementedException();
+            if (type == SheetType.CSV)
+            {
+                using (var writer = new StreamWriter(fileName))
+                {
+                    foreach (var row in Rows)
+                    {
+                        for (int i = 0; i < row.Columns.Count; i++)
+                        {
+                            var column = row.Columns[i];
+                            var lastOne = i >= row.Columns.Count-1;
+
+                            writer.Write(column.Value);
+
+                            if (!lastOne) writer.Write(",");
+                            else writer.WriteLine();
+                        }
+                    }
+                }
+            }
+            else throw new NotImplementedException();
         }
 
         public void Import(string fileName, SheetType type)
