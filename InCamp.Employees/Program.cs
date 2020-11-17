@@ -53,7 +53,7 @@ namespace InCamp.Employees
                 }
 
                 // Simply add time stuff now
-                employee.WorkTimes.Add(new WorkTime() { Date = date, Hours = hours });
+                employee.WorkTimes.Add(new WorkTime() { Date = DateTime.Parse(date), Hours = hours });
             }
 
             // TODO: generate a new CSV
