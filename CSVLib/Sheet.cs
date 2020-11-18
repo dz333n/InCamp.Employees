@@ -56,16 +56,12 @@ namespace SheetLib
                             new string[] { "," },
                             StringSplitOptions.RemoveEmptyEntries);
 
-                        var row = new SheetRow();
-                        Rows.Add(row);
+                        var row = Rows.Create();
 
                         for (int j = 0; j < columns.Length; j++)
                         {
                             var columnRaw = columns[j]; // cell value
-                            var column = new RowColumn(columnRaw);
-
-                            // Console.WriteLine($"Cell: {columnRaw}");
-                            row.Columns.Add(column);
+                            row.Columns.Create(columnRaw);
                         }
                     }
                 }
