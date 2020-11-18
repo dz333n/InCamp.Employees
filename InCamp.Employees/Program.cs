@@ -19,10 +19,14 @@ namespace InCamp.Employees
             var sw = new Stopwatch();
             sw.Start();
 
-            Console.WriteLine("Reading file...");
+            Console.Write("Reading file... ");
             var inputSheet = new Sheet(inputFile, SheetType.CSV);
 
-            Console.WriteLine("Generating a new one...");
+            sw.Stop();
+            Console.WriteLine("Done in " + sw.Elapsed);
+
+            sw.Restart();
+            Console.Write("Generating a new table... ");
             var csv = new Sheet();
 
             var employees = new List<Employee>();
@@ -83,6 +87,13 @@ namespace InCamp.Employees
                     else row.Columns.Create(workTime.Hours); // write work hours
                 }
             }
+
+            sw.Stop();
+            Console.WriteLine("Done in " + sw.Elapsed);
+
+
+            Console.Write("Exporting... ");
+            sw.Restart();
 
             csv.Export(outputFile, SheetType.CSV);
 
